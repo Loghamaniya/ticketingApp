@@ -41,7 +41,7 @@ const CreateTicketForm = ({ addTicket, updateTicket, onClose, initialValues }) =
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
-        <Form className="bg-white shadow-lg rounded-lg px-8 pt-6 pb-8 mb-4 min-w-[300px] max-w-[800px] overflow-hidden">
+        <Form className="bg-white shadow-lg rounded-lg px-8 pt-6 pb-8 mb-4 min-w-[400px] max-w-[1000px] overflow-hidden">
           <br/>
           <h2 className="text-2xl font-bold mb-4">{isEditMode ? 'Edit Ticket' : 'Create Ticket'}</h2>
           <div className="mb-4">
