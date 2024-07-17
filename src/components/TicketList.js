@@ -70,8 +70,8 @@ const TicketList = ({ tickets, loading, error, fetchTickets, deleteTicket, filte
         </div>
         
       </div>
-      <div className="overflow-hidden" style={{ height: '400px', width: '100%' }}>
-        <table className="min-w-full bg-white border rounded-lg border-gray-200" style={{ tableLayout: 'fixed', width: '100%' }}>
+      <div className="overflow-auto" style={{ height: '400px', width: '100%' }}>
+        <table className="min-w-full bg-white overflow-auto border rounded-lg border-gray-200" style={{ tableLayout: 'fixed', width: '100%',minWidth: '800px'  }}>
           <thead>
             <tr>
               <th className="py-2 px-4 border-b text-gray-800" style={{ width: '15%' }}>Name</th>

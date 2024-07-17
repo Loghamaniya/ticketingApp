@@ -41,7 +41,7 @@ const Dashboard = ({  tickets }) => {
 
 
   return (
-    <div className="flex bg-white">
+    <div className="flex bg-white p=0">
       <Sidebar setStatusFilter={setFilter} />
       <div className={`w-full lg:w-3/4 p-4 ${selectedTicket ? 'lg:pl-4' : ''}`}>
         <h1 className="flex text-3xl font-bold mb-4 justify-center">Ticketing App</h1>
