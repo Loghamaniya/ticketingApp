@@ -1,0 +1,195 @@
+[
+    {
+      "name": "Ticket 1",
+      "email": "user1@example.com",
+      "priority": "low",
+      "mode": "mail",
+      "status": "open",
+      "description": "Issue with login functionality, needs investigation."
+    },
+    {
+      "name": "Ticket 2",
+      "email": "user2@example.com",
+      "priority": "medium",
+      "mode": "sms",
+      "status": "in-progress",
+      "description": "Error message not displaying correctly on checkout page."
+    },
+    {
+      "name": "Ticket 3",
+      "email": "user3@example.com",
+      "priority": "high",
+      "mode": "gmail",
+      "status": "close",
+      "description": "Payment gateway integration issue, urgent fix required."
+    },
+    {
+      "name": "Ticket 4",
+      "email": "user4@example.com",
+      "priority": "medium",
+      "mode": "whatsapp",
+      "status": "open",
+      "description": "Product image not loading in mobile view."
+    },
+    {
+      "name": "Ticket 5",
+      "email": "user5@example.com",
+      "priority": "low",
+      "mode": "facebook",
+      "status": "in-progress",
+      "description": "UI alignment issue on user profile page."
+    },
+    {
+      "name": "Ticket 6",
+      "email": "user6@example.com",
+      "priority": "high",
+      "mode": "mail",
+      "status": "open",
+      "description": "Database connection timeout during peak traffic hours."
+    },
+    {
+      "name": "Ticket 7",
+      "email": "user7@example.com",
+      "priority": "medium",
+      "mode": "sms",
+      "status": "close",
+      "description": "Search functionality returning incomplete results."
+    },
+    {
+      "name": "Ticket 8",
+      "email": "user8@example.com",
+      "priority": "low",
+      "mode": "gmail",
+      "status": "in-progress",
+      "description": "Page loading slowly due to large image sizes."
+    },
+    {
+      "name": "Ticket 9",
+      "email": "user9@example.com",
+      "priority": "high",
+      "mode": "whatsapp",
+      "status": "open",
+      "description": "Backend server error when processing user requests."
+    },
+    {
+      "name": "Ticket 10",
+      "email": "user10@example.com",
+      "priority": "medium",
+      "mode": "facebook",
+      "status": "in-progress",
+      "description": "Form submission not triggering email notification."
+    },
+    {
+      "name": "Ticket 11",
+      "email": "user11@example.com",
+      "priority": "low",
+      "mode": "mail",
+      "status": "close",
+      "description": "Navigation menu missing on mobile devices."
+    },
+    {
+      "name": "Ticket 12",
+      "email": "user12@example.com",
+      "priority": "medium",
+      "mode": "sms",
+      "status": "open",
+      "description": "404 error on clicking 'Read More' button in blog section."
+    },
+    {
+      "name": "Ticket 13",
+      "email": "user13@example.com",
+      "priority": "high",
+      "mode": "gmail",
+      "status": "in-progress",
+      "description": "Backend server overload during promotional campaign."
+    },
+    {
+      "name": "Ticket 14",
+      "email": "user14@example.com",
+      "priority": "medium",
+      "mode": "whatsapp",
+      "status": "close",
+      "description": "Video autoplay not working on homepage slider."
+    },
+    {
+      "name": "Ticket 15",
+      "email": "user15@example.com",
+      "priority": "low",
+      "mode": "facebook",
+      "status": "open",
+      "description": "CSS style changes not reflecting on mobile browsers."
+    },
+    {
+      "name": "Ticket 16",
+      "email": "user16@example.com",
+      "priority": "high",
+      "mode": "mail",
+      "status": "in-progress",
+      "description": "SSL certificate renewal causing secure connection issues."
+    },
+    {
+      "name": "Ticket 17",
+      "email": "user17@example.com",
+      "priority": "medium",
+      "mode": "sms",
+      "status": "close",
+      "description": "Order confirmation email not sent after purchase."
+    },
+    {
+      "name": "Ticket 18",
+      "email": "user18@example.com",
+      "priority": "low",
+      "mode": "gmail",
+      "status": "open",
+      "description": "Homepage banner image missing on certain browsers."
+    },
+    {
+      "name": "Ticket 19",
+      "email": "user19@example.com",
+      "priority": "medium",
+      "mode": "whatsapp",
+      "status": "in-progress",
+      "description": "Product price display discrepancy in regional currencies."
+    },
+    {
+      "name": "Ticket 20",
+      "email": "user20@example.com",
+      "priority": "high",
+      "mode": "facebook",
+      "status": "close",
+      "description": "API endpoint returning 500 error intermittently."
+    },
+    {
+      "name": "Ticket 21",
+      "email": "user21@example.com",
+      "priority": "medium",
+      "mode": "mail",
+      "status": "open",
+      "description": "Login session timeout issue after user inactivity."
+    },
+    {
+      "name": "Ticket 22",
+      "email": "user22@example.com",
+      "priority": "low",
+      "mode": "sms",
+      "status": "in-progress",
+      "description": "Checkout page freezing when applying discount code."
+    },
+    {
+      "name": "Ticket 23",
+      "email": "user23@example.com",
+      "priority": "high",
+      "mode": "gmail",
+      "status": "close",
+      "description": "Image upload failing due to server storage limit."
+    },
+    {
+      "name": "Ticket 24",
+      "email": "user24@example.com",
+      "priority": "low",
+      "mode": "whatsapp",
+      "status": "open",
+      "description": "PDF download option missing on product details page."
+    }
+  ]
+  
