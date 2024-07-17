@@ -6,7 +6,7 @@ export const ADD_TICKET = 'ADD_TICKET';
 export const UPDATE_TICKET = 'UPDATE_TICKET';
 export const DELETE_TICKET = 'DELETE_TICKET';
 
-const apiUrl = 'http://localhost:3000/tickets.json';
+const apiUrl = './tickets.json';
 
 export const deleteTicket = (ticketEmail) => ({
   type: DELETE_TICKET,
