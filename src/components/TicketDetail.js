@@ -3,11 +3,11 @@ import { FaTimes } from 'react-icons/fa'; // Import the close icon
 
 const TicketDetail = ({ ticket, onEdit, onClose }) => {
   return (
-    <div className="border-l border-gray-800 p-4 rounded h-full flex flex-col relative">
-      <div className="flex justify-between items-center mb-4">
+    <div className="border-l border-gray-800 p-8 rounded h-full flex flex-col relative">
+      <div className="flex justify-between items-center mb-14">
         <h2 className="text-xl font-bold">Ticket Details</h2>
-        <button onClick={onClose} className="text-gray-800 hover:text-gray-600">
-          <FaTimes />
+        <button onClick={onClose} className="text-red-800 hover:text-red-500">
+          <FaTimes size={24}/>
         </button>
       </div>
       <div className="flex-grow flex flex-col justify-between space-y-4 h-full">

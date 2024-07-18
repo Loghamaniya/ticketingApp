@@ -9,16 +9,15 @@ const Sidebar = ({ setStatusFilter ,setSelectedTicket}) => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    // Remove username from context
+    localStorage.removeItem('username');
     setUsername('');
-    // Redirect to the login page
     navigate('/');
   };
 
   
 
   return (
-    <div className="w-40 bg-gray-800 relative  flex flex-col h-cover">
+    <div className="w-40 bg-gray-800 relative  flex flex-col h-screen">
       <h4 className="text-xl text-yellow-100 p-4 pb-1 font-bold mb-1">
           Welcome,
         </h4>
@@ -60,10 +59,10 @@ const Sidebar = ({ setStatusFilter ,setSelectedTicket}) => {
           </button>
         </li>
       </ul>
-      <div className="ml-9  relative mt-60 mr-9">
+      <div className="ml-7  relative mt-60 mr-9">
         <button
           onClick={handleLogout}
-          className="block w-full rounded text-gray-800 text-left px-4 py-2 bg-yellow-100 hover:bg-gray-500"
+          className="block  rounded text-gray-800 text-left px-4 py-2 bg-yellow-100 hover:bg-gray-500"
         >
           Logout
         </button>

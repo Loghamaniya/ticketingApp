@@ -2,33 +2,18 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { fetchTickets, deleteTicket } from '../actions/ticketActions'; // Import deleteTicket action
 import { FaRegFlag, FaTrash, FaSearch } from 'react-icons/fa'; // Import icons from react-icons
+import usePagination from '../customhooks/usePagination';
 
 const TicketList = ({ tickets, loading, error, fetchTickets, deleteTicket, filter, onTicketSelect }) => {
-  const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState('');
-  const ticketsPerPage = 7;
 
   useEffect(() => {
     fetchTickets();
   }, [fetchTickets]);
 
-  const handleNextPage = () => {
-    if (currentPage < Math.ceil(filteredTickets.length / ticketsPerPage)) {
-      setCurrentPage(currentPage + 1);
-    }
-  };
-
-  const handlePrevPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
-    }
-  };
-
   const handleDelete = (ticketId) => {
     deleteTicket(ticketId);
   };
-
-  const offset = (currentPage - 1) * ticketsPerPage;
 
   // Filter tickets based on search criteria and status filter
   const filteredTickets = tickets.filter(ticket => {
@@ -38,9 +23,11 @@ const TicketList = ({ tickets, loading, error, fetchTickets, deleteTicket, filte
     return matchesSearch && matchesStatus;
   });
 
-  const currentTickets = filteredTickets.slice(offset, offset + ticketsPerPage);
+  const { currentItems: currentTickets, currentPage, totalPages, nextPage, prevPage } = usePagination(filteredTickets, 7);
 
-  
+  if (loading) {
+    return <div className="text-center">Loading...</div>;
+  }
 
   if (error) {
     return <div className="text-center text-red-500">Error: {error}</div>;
@@ -54,7 +41,7 @@ const TicketList = ({ tickets, loading, error, fetchTickets, deleteTicket, filte
   };
 
   return (
-    <div >
+    <div>
       <div className="flex justify-between mb-4">
         <div className="relative">
           <input
@@ -68,10 +55,9 @@ const TicketList = ({ tickets, loading, error, fetchTickets, deleteTicket, filte
             <FaSearch className="text-gray-500" />
           </div>
         </div>
-        
       </div>
       <div className="overflow-auto" style={{ height: '400px', width: '100%' }}>
-        <table className="min-w-full bg-white overflow-auto border rounded-lg border-gray-200" style={{ tableLayout: 'fixed', width: '100%',minWidth: '800px'  }}>
+        <table className="min-w-full bg-white overflow-auto border rounded-lg border-gray-200" style={{ tableLayout: 'fixed', width: '100%', minWidth: '800px' }}>
           <thead>
             <tr>
               <th className="py-2 px-4 border-b text-gray-800" style={{ width: '15%' }}>Name</th>
@@ -86,15 +72,15 @@ const TicketList = ({ tickets, loading, error, fetchTickets, deleteTicket, filte
           <tbody>
             {currentTickets.map((ticket) => (
               <tr key={ticket.email} className="cursor-pointer m-4 rounded-lg hover:bg-gray-100" style={{ border: '5px solid #e2e8f0' }}>
-                <td className="py-2 px-4 " style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }} onClick={() => onTicketSelect(ticket)}>{ticket.name}</td>
-                <td className="py-2 px-4 " style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }} onClick={() => onTicketSelect(ticket)}>{ticket.email}</td>
-                <td className="py-2 px-4 " style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                <td className="py-2 px-4" style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }} onClick={() => onTicketSelect(ticket)}>{ticket.name}</td>
+                <td className="py-2 px-4" style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }} onClick={() => onTicketSelect(ticket)}>{ticket.email}</td>
+                <td className="py-2 px-4" style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                   {priorityToIcon[ticket.priority]}
                 </td>
-                <td className="py-2 px-4 " style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }} onClick={() => onTicketSelect(ticket)}>{ticket.mode}</td>
-                <td className="py-2 px-4 " style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }} onClick={() => onTicketSelect(ticket)}>{ticket.status}</td>
-                <td className="py-2 px-4 " style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }} onClick={() => onTicketSelect(ticket)}>{ticket.description}</td>
-                <td className="py-2 px-4 ">
+                <td className="py-2 px-4" style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }} onClick={() => onTicketSelect(ticket)}>{ticket.mode}</td>
+                <td className="py-2 px-4" style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }} onClick={() => onTicketSelect(ticket)}>{ticket.status}</td>
+                <td className="py-2 px-4" style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }} onClick={() => onTicketSelect(ticket)}>{ticket.description}</td>
+                <td className="py-2 px-4">
                   <button onClick={() => handleDelete(ticket.email)}>
                     <FaTrash className="text-red-500 hover:text-red-700" />
                   </button>
@@ -106,16 +92,16 @@ const TicketList = ({ tickets, loading, error, fetchTickets, deleteTicket, filte
       </div>
       <div className="flex justify-between mt-4">
         <button
-          onClick={handlePrevPage}
+          onClick={prevPage}
           disabled={currentPage === 1}
           className="px-3 py-1 border border-gray-300 rounded disabled:opacity-50"
         >
           Previous
         </button>
-        <span className="px-3 py-1">{`Page ${currentPage} of ${Math.ceil(filteredTickets.length / ticketsPerPage)}`}</span>
+        <span className="px-3 py-1">{`Page ${currentPage} of ${totalPages}`}</span>
         <button
-          onClick={handleNextPage}
-          disabled={currentPage === Math.ceil(filteredTickets.length / ticketsPerPage)}
+          onClick={nextPage}
+          disabled={currentPage === totalPages}
           className="px-3 py-1 border border-gray-300 rounded disabled:opacity-50"
         >
           Next

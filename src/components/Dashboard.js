@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import { connect } from 'react-redux';
 import Sidebar from './Sidebar';
 import TicketList from './TicketList';
@@ -47,6 +47,10 @@ const Dashboard = ({  tickets }) => {
     setAddMode(true);
     setShowForm(true); // Show formik form for editing
   };
+  const modifiedTicket=(ticket)=>{
+    setSelectedTicket(ticket);
+
+  }
 
 
   return (
@@ -64,6 +68,7 @@ const Dashboard = ({  tickets }) => {
         </div>
         {showForm && (
           <CreateTicketForm
+            setSelectedTicket={modifiedTicket}
             onClose={handleFormClose}
             initialValues={editMode ? selectedTicket : null} 
           />

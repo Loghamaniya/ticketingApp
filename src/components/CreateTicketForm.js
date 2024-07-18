@@ -13,7 +13,7 @@ const validationSchema = Yup.object({
   description: Yup.string().required('Required'),
 });
 
-const CreateTicketForm = ({ addTicket, updateTicket, onClose, initialValues }) => {
+const CreateTicketForm = ({ setSelectedTicket, addTicket, updateTicket, onClose, initialValues }) => {
   const isEditMode = !!initialValues; // Check if initialValues are provided to determine edit mode
 
   const handleSubmit = (values, { resetForm }) => {
@@ -22,6 +22,7 @@ const CreateTicketForm = ({ addTicket, updateTicket, onClose, initialValues }) =
     } else {
       addTicket(values);
     }
+    setSelectedTicket(values);
     resetForm();
     onClose(values);
   };

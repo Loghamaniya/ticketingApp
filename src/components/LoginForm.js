@@ -16,6 +16,7 @@ const LoginForm = () => {
   const onSubmit = (values, { setSubmitting }) => {
     // Save username to Redux
     setUsername(values.username);
+    localStorage.setItem('username',values.username);
 
     // Navigate to dashboard
     navigate('/dashboard');
