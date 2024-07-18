@@ -16,13 +16,13 @@ const Sidebar = ({ setStatusFilter, setSelectedTicket }) => {
   };
 
   return (
-    <div style={{ width: '200px' }} className=" bg-gray-800 relative flex flex-col h-screen">
-      <h4 className="text-xl text-yellow-100 p-4 pb-1 font-bold mb-1">
-        Welcome,
-      </h4>
-      <h2 className="text-2xl text-yellow-100 overflow-hidden whitespace-nowrap overflow-ellipsis leading-normal p-4 pt-0 font-bold">
-        {username}
-      </h2>
+    <div style={{ minWidth: '200px' }} className=" bg-gray-800 relative flex flex-col h-screen">
+    <h4 className="text-xl text-yellow-100 p-4 pb-1 font-bold mb-1">
+      Welcome,
+    </h4>
+    <h2 className="text-2xl text-yellow-100 overflow-hidden whitespace-nowrap overflow-ellipsis leading-normal p-4 pt-0 font-bold">
+      {username}
+    </h2>
       
       <ul>
         <li className="hover:bg-gray-500">
@@ -72,7 +72,7 @@ const Sidebar = ({ setStatusFilter, setSelectedTicket }) => {
         <li className="fixed bottom-10">
           <button
             onClick={handleLogout}
-            className="rounded text-gray-800 ml-10 text-left px-4 py-2 bg-yellow-100 hover:bg-gray-500"
+            className="rounded text-gray-800 ml-10 mr-10 text-left px-4 py-2 bg-yellow-100 hover:bg-gray-500"
           >
             Logout
           </button>
