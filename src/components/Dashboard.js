@@ -24,6 +24,10 @@ const Dashboard = ({  tickets }) => {
     setAddMode(true);
   };
 
+  const handleClose = () => {
+    setSelectedTicket(null);
+  };
+
   const handleFormClose = () => {
     setShowForm(false);
     setEditMode(false); // Ensure edit mode is off when form is closed
@@ -40,7 +44,7 @@ const Dashboard = ({  tickets }) => {
   const handleEditTicket = (ticket) => {
     setSelectedTicket(ticket); // Set selected ticket for editing
     setEditMode(true);
-    setAddMode(false);
+    setAddMode(true);
     setShowForm(true); // Show formik form for editing
   };
 
@@ -71,6 +75,7 @@ const Dashboard = ({  tickets }) => {
           <TicketDetail
             ticket={selectedTicket}
             onEdit={handleEditTicket} // Pass callback to handle edit button click
+            onClose={handleClose}
           />
         </div>
       )}

@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { UserContext } from '../context/userContext';
 import { useNavigate } from 'react-router-dom';
 
-const Sidebar = ({ setStatusFilter }) => {
+const Sidebar = ({ setStatusFilter ,setSelectedTicket}) => {
   const { username, setUsername } = useContext(UserContext);
 
 
@@ -15,6 +15,8 @@ const Sidebar = ({ setStatusFilter }) => {
     navigate('/');
   };
 
+  
+
   return (
     <div className="w-40 bg-gray-800 relative  flex flex-col h-cover">
       <h4 className="text-xl text-yellow-100 p-4 pb-1 font-bold mb-1">
@@ -23,8 +25,7 @@ const Sidebar = ({ setStatusFilter }) => {
         <h2 className="text-2xl text-yellow-100 p-4 pt-0 font-bold mb-4 max-w-full truncate">
           {username}
         </h2>
-        {/* <p className="text-yellow-100 p-4 mb-4 truncate">{username}</p> */}
-      {/* <h2 className="text-2xl text-yellow-100 p-4 font-bold mb-4 truncate">Welcome, {username}</h2> */}
+      
       <ul>
         <li className="hover:bg-gray-500">
           <button
