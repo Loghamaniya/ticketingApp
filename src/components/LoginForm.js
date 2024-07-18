@@ -1,10 +1,11 @@
-import React,{useContext} from 'react';
+import React, { useContext } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../context/userContext';
 
 const LoginForm = () => {
-    const { setUsername } = useContext(UserContext);
+  const { setUsername } = useContext(UserContext);
   const navigate = useNavigate();
 
   const initialValues = {
@@ -13,31 +14,24 @@ const LoginForm = () => {
     password: '',
   };
 
+  const validationSchema = Yup.object().shape({
+    username: Yup.string().required('Required'),
+    email: Yup.string().email('Invalid email address').required('Required'),
+    password: Yup.string()
+      .min(6, 'Password must be at least 6 characters')
+      .max(15, 'Password must be less than 15 characters')
+      .required('Required'),
+  });
+
   const onSubmit = (values, { setSubmitting }) => {
     // Save username to Redux
     setUsername(values.username);
-    localStorage.setItem('username',values.username);
+    localStorage.setItem('username', values.username);
 
     // Navigate to dashboard
     navigate('/dashboard');
 
     setSubmitting(false);
-  };
-
-  const validate = (values) => {
-    const errors = {};
-    if (!values.username) {
-      errors.username = 'Required';
-    }
-    if (!values.email) {
-      errors.email = 'Required';
-    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
-      errors.email = 'Invalid email address';
-    }
-    if (!values.password) {
-      errors.password = 'Required';
-    }
-    return errors;
   };
 
   return (
@@ -47,7 +41,7 @@ const LoginForm = () => {
         <Formik
           initialValues={initialValues}
           onSubmit={onSubmit}
-          validate={validate}
+          validationSchema={validationSchema}
         >
           {({ isSubmitting }) => (
             <Form>
@@ -103,6 +97,5 @@ const LoginForm = () => {
     </div>
   );
 };
-
 
 export default LoginForm;

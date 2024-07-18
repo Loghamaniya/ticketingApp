@@ -12,11 +12,6 @@ const Dashboard = ({  tickets }) => {
   const [editMode, setEditMode] = useState(false);
   const [addMode, setAddMode] = useState(false);
 
-  // useEffect(() => {
-  //   if (!selectedTicket && tickets.length > 0) {
-  //     setSelectedTicket(tickets[0]); 
-  //   }
-  // }, [tickets, selectedTicket]);
 
   const handleCreateTicketClick = () => {
     setShowForm(true);
@@ -56,9 +51,10 @@ const Dashboard = ({  tickets }) => {
   return (
     <div className="flex bg-white p=0">
       <Sidebar setStatusFilter={setFilter} />
-      <div className={` lg:w-3/4 p-4  ${selectedTicket ? '' : ''}`}>
-        <h1 className="flex text-3xl font-bold mb-4 justify-center">Ticketing App</h1>
-        <div className="flex justify-end">
+      {/* <div className={` bg-green-500 w-3/4 p-4  ${selectedTicket ? '' : 'w-4/4'}`}> */}
+      <div className={`flex-grow  overflow-auto`}>
+        <h1 className="flex text-3xl pt-2 font-bold mb-4 justify-center">Ticketing Dashboard</h1>
+        <div className="flex justify-end pr-6">
         <button
           onClick={handleCreateTicketClick}
           className="mb-4 px-4 py-2 hover:bg-gray-500 bg-gray-800 text-yellow-100 rounded"
@@ -76,13 +72,13 @@ const Dashboard = ({  tickets }) => {
         <TicketList tickets={tickets} filter={filter} onTicketSelect={handleTicketSelect} />
       </div>
       {selectedTicket && (!editMode || !addMode) &&(
-        <div className="w-full lg:w-1/4">
+        <div >
           <TicketDetail
             ticket={selectedTicket}
             onEdit={handleEditTicket} // Pass callback to handle edit button click
             onClose={handleClose}
           />
-        </div>
+         </div>
       )}
     </div>
   );

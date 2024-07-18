@@ -3,9 +3,9 @@ import { FaTimes } from 'react-icons/fa'; // Import the close icon
 
 const TicketDetail = ({ ticket, onEdit, onClose }) => {
   return (
-    <div className="border-l border-gray-800 p-8 rounded h-full flex flex-col relative">
+    <div style={{ width: '300px' }} className="border-l border-gray-800 p-8 rounded h-full pt-14 flex flex-col relative">
       <div className="flex justify-between items-center mb-14">
-        <h2 className="text-xl font-bold">Ticket Details</h2>
+        <h2 className="text-2xl font-bold">Ticket Details</h2>
         <button onClick={onClose} className="text-red-800 hover:text-red-500">
           <FaTimes size={24}/>
         </button>
@@ -30,7 +30,7 @@ const TicketDetail = ({ ticket, onEdit, onClose }) => {
           <div>
             <strong>Description:</strong> {ticket.description}
           </div>
-          <div className="flex justify-center">
+          <div className="flex justify-center pt-6">
             <button
               onClick={() => onEdit(ticket)} // Pass ticket to onEdit callback
               className="hover:bg-gray-500 px-10 py-2 bg-gray-800 text-yellow-100 rounded"

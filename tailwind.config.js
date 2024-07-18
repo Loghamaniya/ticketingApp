@@ -7,6 +7,9 @@ module.exports = {
         width: {
           '11rem': '11rem',
       },
+      fontFamily: {
+        'times': ['"Times New Roman"', 'serif'],
+      },
     },
   },
   plugins: [],

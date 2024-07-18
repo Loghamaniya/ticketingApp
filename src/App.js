@@ -6,6 +6,7 @@ import Dashboard from './components/Dashboard';
 import LoginForm from './components/LoginForm';
 import './index.css'; // Ensure Tailwind CSS is included
 import { UserProvider } from './context/userContext';
+import ProtectedRoute from './ProtectedRoute';
 
 const App = () => {
   return (
@@ -13,8 +14,8 @@ const App = () => {
       <UserProvider> 
         <Router>
       <Routes>
-        <Route path="/" element={<LoginForm />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/" element={<LoginForm />} />
+      <Route path="/dashboard" element={<ProtectedRoute element={Dashboard}/>} />
       </Routes>
     </Router>
     </UserProvider>
