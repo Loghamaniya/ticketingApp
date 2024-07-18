@@ -23,11 +23,11 @@ const CreateTicketForm = ({ addTicket, updateTicket, onClose, initialValues }) =
       addTicket(values);
     }
     resetForm();
-    onClose();
+    onClose(values);
   };
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 z-50 overflow-auto">
+    <div className="fixed inset-0 h-full flex items-center justify-center bg-gray-900 pt-12 bg-opacity-50 z-50 overflow-auto">
       
       <Formik
         initialValues={initialValues || { // Use provided initialValues or default initial values
@@ -41,9 +41,9 @@ const CreateTicketForm = ({ addTicket, updateTicket, onClose, initialValues }) =
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
-        <Form className="bg-white shadow-lg rounded-lg px-8 pt-6 pb-8 mb-4 min-w-[400px] max-w-[1000px] overflow-hidden">
+        <Form className="bg-white relative shadow-lg rounded-lg px-8  pb-8 mt-12 mb-4 min-w-[400px] max-w-[1000px] overflow-auto">
           <br/>
-          <h2 className="text-2xl font-bold mb-4">{isEditMode ? 'Edit Ticket' : 'Create Ticket'}</h2>
+          <h2 className="text-2xl font-bold text-center mb-4">{isEditMode ? 'Edit Ticket' : 'Create Ticket'}</h2>
           <div className="mb-4">
             <label htmlFor="name" className="block text-sm font-bold mb-2">
               Name
@@ -52,7 +52,7 @@ const CreateTicketForm = ({ addTicket, updateTicket, onClose, initialValues }) =
               type="text"
               id="name"
               name="name"
-              className="w-full px-3 py-2 border rounded"
+              className="w-full px-3 py-2 border border-gray-500 rounded"
             />
             <ErrorMessage
               name="name"
@@ -68,7 +68,7 @@ const CreateTicketForm = ({ addTicket, updateTicket, onClose, initialValues }) =
               type="email"
               id="email"
               name="email"
-              className="w-full px-3 py-2 border rounded"
+              className="w-full px-3 py-2 border border-gray-500 rounded"
             />
             <ErrorMessage
               name="email"
@@ -157,7 +157,7 @@ const CreateTicketForm = ({ addTicket, updateTicket, onClose, initialValues }) =
               id="description"
               name="description"
               rows="4"
-              className="w-full px-3 py-2 border rounded"
+              className="w-full px-3 py-2 border border-gray-500 rounded"
             />
             <ErrorMessage
               name="description"

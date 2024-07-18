@@ -10,6 +10,7 @@ const Dashboard = ({  tickets }) => {
   const [showForm, setShowForm] = useState(false);
   const [selectedTicket, setSelectedTicket] = useState(null);
   const [editMode, setEditMode] = useState(false);
+  const [addMode, setAddMode] = useState(false);
 
   // useEffect(() => {
   //   if (!selectedTicket && tickets.length > 0) {
@@ -20,22 +21,26 @@ const Dashboard = ({  tickets }) => {
   const handleCreateTicketClick = () => {
     setShowForm(true);
     setEditMode(false); // Ensure edit mode is off when creating new ticket
+    setAddMode(true);
   };
 
   const handleFormClose = () => {
     setShowForm(false);
     setEditMode(false); // Ensure edit mode is off when form is closed
+    setAddMode(false);
   };
 
   const handleTicketSelect = (ticket) => {
     setSelectedTicket(ticket);
-    setEditMode(false); // Ensure edit mode is off when selecting ticket
+    setEditMode(false);
+    setAddMode(false); // Ensure edit mode is off when selecting ticket
   };
 
 
   const handleEditTicket = (ticket) => {
     setSelectedTicket(ticket); // Set selected ticket for editing
     setEditMode(true);
+    setAddMode(false);
     setShowForm(true); // Show formik form for editing
   };
 
@@ -61,7 +66,7 @@ const Dashboard = ({  tickets }) => {
         )}
         <TicketList tickets={tickets} filter={filter} onTicketSelect={handleTicketSelect} />
       </div>
-      {selectedTicket && !editMode && (
+      {selectedTicket && (!editMode || !addMode) &&(
         <div className="w-full lg:w-1/4">
           <TicketDetail
             ticket={selectedTicket}
