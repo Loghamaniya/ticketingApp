@@ -16,7 +16,7 @@ const Sidebar = ({ setStatusFilter }) => {
   };
 
   return (
-    <div className="w-11rem bg-gray-800  flex flex-col h-cover">
+    <div className="w-50 bg-gray-800  flex flex-col h-cover">
       <h4 className="text-xl text-yellow-100 p-4 pb-1 font-bold mb-1">
           Welcome,
         </h4>

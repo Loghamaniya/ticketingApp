@@ -11,11 +11,11 @@ const Dashboard = ({  tickets }) => {
   const [selectedTicket, setSelectedTicket] = useState(null);
   const [editMode, setEditMode] = useState(false);
 
-  useEffect(() => {
-    if (!selectedTicket && tickets.length > 0) {
-      setSelectedTicket(tickets[0]); 
-    }
-  }, [tickets, selectedTicket]);
+  // useEffect(() => {
+  //   if (!selectedTicket && tickets.length > 0) {
+  //     setSelectedTicket(tickets[0]); 
+  //   }
+  // }, [tickets, selectedTicket]);
 
   const handleCreateTicketClick = () => {
     setShowForm(true);
@@ -43,7 +43,7 @@ const Dashboard = ({  tickets }) => {
   return (
     <div className="flex bg-white p=0">
       <Sidebar setStatusFilter={setFilter} />
-      <div className={`w-full lg:w-3/4 p-4 ${selectedTicket ? 'lg:pl-4' : ''}`}>
+      <div className={` lg:w-3/4 p-4  ${selectedTicket ? '' : ''}`}>
         <h1 className="flex text-3xl font-bold mb-4 justify-center">Ticketing App</h1>
         <div className="flex justify-end">
         <button
