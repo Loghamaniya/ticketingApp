@@ -5,7 +5,7 @@ import { FaRegFlag, FaTrash, FaSearch } from 'react-icons/fa'; // Import icons f
 import usePagination from '../customhooks/usePagination';
 import Swal from 'sweetalert2'; // Import SweetAlert2
 
-const TicketList = ({ tickets, loading, error, fetchTickets, deleteTicket, filter, onTicketSelect }) => {
+const TicketList = ({ tickets, error, fetchTickets, deleteTicket, filter, onTicketSelect }) => {
   const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
@@ -47,9 +47,6 @@ const TicketList = ({ tickets, loading, error, fetchTickets, deleteTicket, filte
     setCurrentPage(1); // Reset page to 1 when filter or search query changes
   }, [filter, searchQuery, setCurrentPage]);
 
-  if (loading) {
-    return <div className="text-center">Loading...</div>;
-  }
 
   if (error) {
     return <div className="text-center text-red-500">Error: {error}</div>;
